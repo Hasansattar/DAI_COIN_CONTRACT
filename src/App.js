@@ -30,7 +30,7 @@ function App() {
       const tokenInst = new web3.eth.Contract(tokenABI, DaiContractAddress);
 
       const balance = await tokenInst.methods
-        .balanceOf(MetaMaskTokenAddress)
+        .balanceOf(accs[0])
         .call();
 
       console.log(balance);
@@ -54,7 +54,7 @@ function App() {
     tokenInst.methods
       .transfer(Address, web3.utils.toWei(amount, "ether"))
       .send({
-        from: "0xe5889eA79CC1bA8d8816c1C706965cA5ae82be1B",
+        from: Accounts,
       });
     // await web3.eth.sendTranstion({
     //   from: "0xe5889eA79CC1bA8d8816c1C706965cA5ae82be1B",
