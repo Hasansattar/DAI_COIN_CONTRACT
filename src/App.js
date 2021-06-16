@@ -66,17 +66,19 @@ function App() {
   console.log(amount);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
+    
+        
         <div>
           <h1>Address</h1>
           {Accounts}
         </div>
-        <div>
-          <h1>Balance</h1>
-          {Balance} DAi
-        </div>
-
+        <br/>
+        <div className="main-container">
+          <h1>Balance:  {Balance} DAi </h1>
+         
+        
+            <div className="form-container" >
         <input
           type="text"
           placeholder="Enter Dai address"
@@ -89,9 +91,12 @@ function App() {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
+           <button onClick={sendTranstion}>Send</button>
+        </div>
+        
 
-        <button onClick={sendTranstion}>Send</button>
-      </header>
+        </div>
+      
     </div>
   );
 }
