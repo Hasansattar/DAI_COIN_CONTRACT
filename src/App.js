@@ -7,11 +7,10 @@ function App() {
   const [Accounts, setAccounts] = useState();
   const [Balance, setBalance] = useState();
   const [Address, setAddress] = useState();
-  const [amount, setAmount] = useState();
+  const [Amount, setAmount] = useState();
 
   const DaiContractAddress = "0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea";
-  const MetaMaskTokenAddress = "0xe5889eA79CC1bA8d8816c1C706965cA5ae82be1B";
-
+ 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     if (typeof window.ethereum !== "undefined") {
@@ -25,7 +24,7 @@ function App() {
       console.log(accounts);
       var accs = await web3.eth.getAccounts();
       setAccounts(accs[0]);
-      console.log(accs[0]);
+     // console.log(accs[0]);
 
       const tokenInst = new web3.eth.Contract(tokenABI, DaiContractAddress);
 
@@ -33,37 +32,29 @@ function App() {
         .balanceOf(accs[0])
         .call();
 
-      console.log(balance);
+     // console.log(balance);
 
       const blc = web3.utils.fromWei(balance);
-      console.log(blc);
-
-      setBalance(blc);
+     // console.log(blc);
+       setBalance(blc);
     } else {
       window.alert("please install metamask");
     }
   }, []);
 
-  console.log(Accounts);
-  console.log(Balance);
+  // console.log(Accounts);
+  // console.log(Balance);
 
   const sendTranstion = async () => {
     const web3 = new Web3(window.ethereum);
 
     const tokenInst = new web3.eth.Contract(tokenABI, DaiContractAddress);
-    tokenInst.methods
-      .transfer(Address, web3.utils.toWei(amount, "ether"))
-      .send({
+   await  tokenInst.methods.transfer(Address, web3.utils.toWei(Amount, "ether")).send({
         from: Accounts,
       });
-    // await web3.eth.sendTranstion({
-    //   from: "0xe5889eA79CC1bA8d8816c1C706965cA5ae82be1B",
-    //   to: Address,
-    //   value: web3.utils.toWei(amount, "ether"),
-    // });
   };
-  console.log(Address);
-  console.log(amount);
+  // console.log(Address);
+  // console.log(Amount);
 
   return (
     <div className="container">
@@ -84,12 +75,14 @@ function App() {
           placeholder="Enter Dai address"
           value={Address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
         <input
           type="number"
           placeholder="Enter Amount"
-          value={amount}
+          value={Amount}
           onChange={(e) => setAmount(e.target.value)}
+          required
         />
            <button onClick={sendTranstion}>Send</button>
         </div>
