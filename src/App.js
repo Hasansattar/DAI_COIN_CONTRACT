@@ -10,7 +10,7 @@ function App() {
   const [Amount, setAmount] = useState();
  
 
-  const DaiContractAddress = "0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea";
+  const DaiContractAddress = "0xad6d458402f60fd3bd25163575031acdce07538d";
  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
