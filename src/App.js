@@ -8,6 +8,7 @@ function App() {
   const [Balance, setBalance] = useState();
   const [Address, setAddress] = useState();
   const [Amount, setAmount] = useState();
+ 
 
   const DaiContractAddress = "0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea";
  
@@ -76,6 +77,7 @@ function App() {
           value={Address}
           onChange={(e) => setAddress(e.target.value)}
           required
+         
         />
         <input
           type="number"
@@ -83,8 +85,9 @@ function App() {
           value={Amount}
           onChange={(e) => setAmount(e.target.value)}
           required
+         
         />
-           <button onClick={sendTranstion}>Send</button>
+           <button onClick={sendTranstion} disabled={!Address || !Amount}   >Send</button>
         </div>
         
 
