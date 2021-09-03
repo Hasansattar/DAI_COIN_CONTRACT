@@ -9,8 +9,8 @@ function App() {
   const [Address, setAddress] = useState();
   const [Amount, setAmount] = useState();
  
-
-  const DaiContractAddress = "0xad6d458402f60fd3bd25163575031acdce07538d";
+  //Rinkeby Dai contract address
+  const DaiContractAddress = "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa";
  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
